@@ -93,9 +93,11 @@ int graph<weightType>::isConnected(){
 		if ( edges[i]->s == edges[i]->e ){
 			throw "Graph has loops";
 		}
+		printf("Unite %d and %d. p[%d] = %d\n",edges[i]->s,edges[i]->e, edges[i]->s,edges[i]->e);
 		p->unite(edges[i]->s, edges[i]->e);
 	}
 	for( int i = 0; i < n; i++){
+		printf("getplenty(%d) = %d",i,p->getPlenty(i));
 		if( p->getPlenty(i) != p->getPlenty(0) ){
 			delete p;
 			return 0;

@@ -13,7 +13,14 @@ void generate_and_apply(FILE *&f){
 	fscanf(f,"%f",&wMin);
 	fscanf(f,"%f",&wMax);
 	try{
-		g->create(wMin, wMax);
+		int i = 0;
+		for(; i < 10; i++){
+			g->create(wMin, wMax);
+			for(int j = 0; j < m; j++)
+				printf("%d - %d\n",g->edges[j]->s, g->edges[j]->e);
+			if (g->isConnected())
+				break;
+		}		
 	}
 	catch (...){
 		fclose(f);
@@ -22,15 +29,11 @@ void generate_and_apply(FILE *&f){
 	}
 	fclose (f);
 
-	f = fopen("graph_input.txt","w");
-	fprintf(f,"%d %d\n", n, m);	
+	FILE *f2 = fopen("graph_input.txt","w");
+	fprintf(f2,"%d %d\n", n, m);	
 	for(int i = 0; i < m; i++)
-		fprintf(f,"%d %d %.2f\n",g->edges[i]->s, g->edges[i]->e, g->edges[i]->w);
-	fclose (f);
-	/*if (!g->isConnected()) {
-		remove("graph_output.txt");
-		exit(-2);
-	}*/
+		fprintf(f2,"%d %d %.2f\n",g->edges[i]->s, g->edges[i]->e, g->edges[i]->w);
+	fclose (f2);
 	kruskal<float> *k;
 	try{
 		k = new kruskal<float>(g);
@@ -63,10 +66,10 @@ void copy_and_apply(FILE *&f){
 		g->insEdge(i,new edge<float>( s, e, w));
 	}
 	fclose (f);
-	/*if (!g->isConnected()) {
+	if (!g->isConnected()) {
 		remove("graph_output.txt");
 		exit(-2);
-	}*/
+	}
 	kruskal<float> *k;
 	try{
 		k = new kruskal<float>(g);

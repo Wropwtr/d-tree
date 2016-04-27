@@ -96,7 +96,7 @@ namespace SampleKruskal
 
             var process = Process.Start("kruskal.exe");
             process.WaitForExit();
-            if (!File.Exists("graph_input.txt"))
+            if (!File.Exists(@"graph_input.txt"))
             {
                 MessageBox.Show("Something goes wrong.");
                 return;

@@ -25,7 +25,7 @@ void heapsort<tData>::sort(tData **&arr, int size, int d){
 	} // filling
 
 	t->doHeap();
-	for( int i = size-1; i > 0; i--){
+	for( int i = size-1; i >= 0; i--){
 		t->swap(i, 0);
 		t->down(0);
 	} // heapsort

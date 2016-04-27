@@ -76,6 +76,29 @@ TEST(Graph, isConnected_works_5)
 	EXPECT_EQ(g->isConnected(), false);
 }
 
+TEST(Graph, isConnected_works_6)
+{
+	graph<int> *g = new graph<int>(6, 12);
+
+	g->insEdge(0, new edge<int>(4, 3, 0));
+	g->insEdge(1, new edge<int>(5, 1, 0));
+	g->insEdge(2, new edge<int>(3, 5, 0));
+
+	g->insEdge(3, new edge<int>(4, 0, 0));
+	g->insEdge(4, new edge<int>(2, 1, 0));
+	g->insEdge(5, new edge<int>(4, 2, 0));
+
+	g->insEdge(6, new edge<int>(2, 3, 0));
+	g->insEdge(7, new edge<int>(0, 3, 0));
+	g->insEdge(8, new edge<int>(0, 1, 0));
+
+	g->insEdge(9, new edge<int>(5, 2, 0));
+	g->insEdge(10, new edge<int>(0, 2, 0));
+	g->insEdge(11, new edge<int>(4, 1, 0));
+
+	EXPECT_EQ(g->isConnected(), true);
+}
+
 TEST(Graph, isConnected_works_with_one_node)
 {
 	graph<int> *g = new graph<int>(1, 0);
