@@ -50,7 +50,7 @@ TEST(Dijkstra, can_calculate_on_graph_from_Wiki){
     
 } // [0..5] - connected, 6 - nave not edges
 
-TEST(Dijkstra, can_calculate_for_single_way){
+TEST(Dijkstra, can_calculate_for_tree_1){
 	graph<int> *g = new graph<int>(4, 3);
 
 	g->insEdge(0, new edge<int>(0, 1, 1));
@@ -60,6 +60,40 @@ TEST(Dijkstra, can_calculate_for_single_way){
 	dijkstra<int> *d = new dijkstra<int>(g, 0);
 
 	EXPECT_EQ((d->marks[3]->markWeight == 3) && (d->parents[3] == 2), true);
+
+	delete d;
+	delete g;
+}
+
+TEST(Dijkstra, can_calculate_for_tree_2){
+	graph<int> *g = new graph<int>(4, 3);
+
+	g->insEdge(0, new edge<int>(0, 1, 1));
+	g->insEdge(1, new edge<int>(0, 2, 1));
+	g->insEdge(2, new edge<int>(0, 3, 1));
+
+	dijkstra<int> *d = new dijkstra<int>(g, 0);
+
+	ASSERT_TRUE(d->parents[3] == d->parents[2] == d->parents[1] == 0);
+
+	delete d;
+	delete g;
+}
+
+TEST(Dijkstra, can_calculate_for_full_graph){
+	graph<int> *g = new graph<int>(4, 6);
+
+	g->insEdge(0, new edge<int>(0, 1, 1));
+	g->insEdge(1, new edge<int>(0, 2, 1));
+	g->insEdge(2, new edge<int>(0, 3, 1));
+
+	g->insEdge(3, new edge<int>(1, 2, 1));
+	g->insEdge(4, new edge<int>(1, 3, 1));
+	g->insEdge(5, new edge<int>(2, 3, 1));
+
+	dijkstra<int> *d = new dijkstra<int>(g, 3);
+
+	ASSERT_TRUE(d->parents[0] == d->parents[2] == d->parents[1] == 0);
 
 	delete d;
 	delete g;

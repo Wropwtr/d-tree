@@ -20,7 +20,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -87,6 +87,7 @@
     <ClCompile Include="..\..\..\..\test\test_heapsort.cpp" />
     <ClCompile Include="..\..\..\..\test\test_kruskal.cpp" />
     <ClCompile Include="..\..\..\..\test\test_main.cpp" />
+    <ClCompile Include="..\..\..\..\test\test_plenty.cpp" />
     <ClCompile Include="..\..\..\..\test\test_queue.cpp" />
     <ClCompile Include="..\..\..\..\test\test_tree.cpp" />
   </ItemGroup>

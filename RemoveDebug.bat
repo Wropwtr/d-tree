@@ -1,1 +1,0 @@
-FORFILES /S /C "cmd /c rmdir /s/q Debug"

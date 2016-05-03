@@ -55,3 +55,22 @@ TEST(Kruskal, can_create_carcase_from_5_edges){
     delete k;
     delete g;
 }
+
+TEST(Kruskal, tree_carcase_for_itself){
+	graph<int> *g = new graph<int>(6, 5);
+
+	g->insEdge(0, new edge<int>(0, 1, 7));
+	g->insEdge(1, new edge<int>(1, 2, 9));
+	g->insEdge(2, new edge<int>(2, 3, 14));
+
+	g->insEdge(3, new edge<int>(3, 4, 4));
+	g->insEdge(4, new edge<int>(4, 5, 1));
+
+	kruskal<int> *k = new kruskal<int>(g);
+
+	EXPECT_EQ(k->carcaseSize, 5);
+	delete k;
+	delete g;
+}
+
+

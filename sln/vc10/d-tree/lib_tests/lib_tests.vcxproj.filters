@@ -8,5 +8,6 @@
     <ClCompile Include="..\..\..\..\test\test_main.cpp" />
     <ClCompile Include="..\..\..\..\test\test_queue.cpp" />
     <ClCompile Include="..\..\..\..\test\test_tree.cpp" />
+    <ClCompile Include="..\..\..\..\test\test_plenty.cpp" />
   </ItemGroup>
 </Project>
